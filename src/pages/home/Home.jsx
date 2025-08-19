@@ -3,6 +3,7 @@ import Header from './Header'
 import SearchBar from './SearchBar'
 import OfferSection from './OfferSection'
 import SliderSection from './SliderSection'
+import TrendingDest from './TrendingDest'
 
 function Home() {
   return (
@@ -11,9 +12,10 @@ function Home() {
      <Header/>
      <SearchBar/>
     </div>
-    <div className='pl-23 pt-10 font-sans max-sm:pl-4'>
+    <div className='pl-23 pr-23 pt-10 font-sans max-sm:pl-4'>
       <OfferSection/>
       <SliderSection/>
+      <TrendingDest/>
     </div>
    </div>
 
