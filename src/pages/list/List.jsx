@@ -14,7 +14,7 @@ function List() {
     <div className='-mt-30'>
     <SearchBar searchData={searchData}/>
     </div>
-    <div className='flex justify-between pl-10 pr-120'>
+    <div className='flex justify-between pl-10 pr-80'>
    <div className=' w-80'>
    <Filters/>
    </div>

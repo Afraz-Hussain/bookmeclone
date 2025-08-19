@@ -49,3 +49,5 @@ export const sliderdata=[
         pic:"pics/apartment.jpeg"   
        },
 ]
+
+// property data

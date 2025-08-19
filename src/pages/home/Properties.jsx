@@ -12,7 +12,7 @@ function Properties() {
     }, [location.state]) 
   return (
     <div>
-      <h1>{loc}</h1>
+      <h1 className='font-bold text-2xl'>{loc}:10,91 properties</h1>
     </div>
   )
 }
