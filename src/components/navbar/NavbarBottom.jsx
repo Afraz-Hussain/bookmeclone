@@ -12,7 +12,7 @@ const NavbarBottom = () => {
   ];
 
   return (
-    <div className="flex gap-6 items-center bg-[#003B95] pl-20">
+    <div className="flex gap-6 items-center bg-[#003B95] pl-20 pb-10">
       {cate.map((item, index) => (
         <div
           key={index}
