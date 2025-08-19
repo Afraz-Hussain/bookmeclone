@@ -17,11 +17,11 @@ const SearchBar = () => {
   const [openGuestsBox, setOpenGuestsBox] = useState(false);
 
   
-  const handleChange = (type, operation) => {
+  const handleChange = (NUMBER, operation) => {
     setGuests((prev) => ({
       ...prev,
-      [type]:
-        operation === "inc" ? prev[type] + 1 : Math.max(0, prev[type] - 1),
+      [NUMBER]:
+        operation === "inc" ? prev[NUMBER] + 1 : Math.max(0, prev[NUMBER] - 1),
     }));
   };
 
@@ -46,20 +46,24 @@ const SearchBar = () => {
       </div>
 
       {/* Date */}
-      <div className="flex items-center gap-2 p-3 bg-white rounded-sm flex-1 min-w-[150px]">
-        <CalendarDays size={20} color="darkgray" />
-        <DatePicker
-          selectsRange={true}
-          startDate={startDate}
-          endDate={endDate}
-          onChange={(update) => setDateRange(update)}
-          isClearable={true}
-          placeholderText="Check-in  — check-out "
-          className="outline-none w-full"
-        />
-      </div>
+      <div className="flex items-center gap-2 p-3 bg-white rounded-sm flex-1 min-w-[150px] relative">
+  {/* Calendar Icon */}
+  <CalendarDays size={20} color="darkgray" />
 
-      {/* Guests (dropdown like Booking.com) */}
+  {/* Date Picker */}
+  <DatePicker
+    selectsRange={true}
+    startDate={startDate}
+    endDate={endDate}
+    onChange={(update) => setDateRange(update)}
+    isClearable={true}
+    placeholderText="Check-in — Check-out"
+    className="outline-none w-full pr-10 " 
+  />
+</div>
+
+
+      
       <div className="relative flex items-center gap-2 p-3 bg-white rounded-sm flex-1 min-w-[150px]">
         <UserRound size={20} color="darkgray" />
         <div
@@ -75,20 +79,20 @@ const SearchBar = () => {
     {/* Adults */}
     <div className="flex justify-between items-center mb-2">
       <span>Adults</span>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 border rounded-md p-2">
         <button
           onClick={() => handleChange("adults", "dec")}
-          className="px-2 py-1 border rounded disabled:opacity-50"
+          className="px-2 py-1  rounded disabled:opacity-50 hover:bg-[#F0F6FD]"
           disabled={guests.adults <= 1}
         >
-          <Minus size={14} />
+          <Minus size={16} />
         </button>
         <span>{guests.adults}</span>
         <button
           onClick={() => handleChange("adults", "inc")}
-          className="px-2 py-1 border rounded"
+          className="px-2 py-1  rounded hover:bg-[#F0F6FD]"
         >
-          <Plus size={14} />
+          <Plus size={16}  />
         </button>
       </div>
     </div>
@@ -96,7 +100,7 @@ const SearchBar = () => {
     {/* Children */}
     <div className="flex justify-between items-center mb-2">
       <span>Children</span>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 border rounded-md p-2">
         <button
           onClick={() => handleChange("children", "dec")}
           className="px-2 py-1 border rounded disabled:opacity-50"
@@ -117,7 +121,7 @@ const SearchBar = () => {
     {/* Rooms */}
     <div className="flex justify-between items-center mb-2">
       <span>Rooms</span>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 border rounded-md p-2">
         <button
           onClick={() => handleChange("rooms", "dec")}
           className="px-2 py-1 border rounded disabled:opacity-50"
@@ -140,8 +144,10 @@ const SearchBar = () => {
       <span>Traveling with pets?</span>
       <label className="relative inline-flex items-center cursor-pointer">
         <input type="checkbox" className="sr-only peer" />
-        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-300 peer-checked:bg-blue-600"></div>
-        <div className="absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition-all peer-checked:translate-x-full"></div>
+        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer
+         dark:bg-gray-300 peer-checked:bg-blue-600"></div>
+        <div className="absolute left-0.5 top-0.5 bg-white w-5 h-5 rounded-full transition-all
+        peer-checked:translate-x-full"></div>
       </label>
     </div>
 

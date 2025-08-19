@@ -9,7 +9,7 @@ const OfferSection = () => {
       </span>
       <div className='flex gap-4'>
 
-<div className='border border-gray-300 rounded-md p-4 w-100'>
+<div className=' flex justify-between border border-gray-300 rounded-md p-4 w-110'>
 <div>
 <h2 className="font-medium">Quick escape, quality time</h2>
 <p>Save up to 20% with a Getaway Deal</p>
@@ -17,7 +17,10 @@ const OfferSection = () => {
 Save On Stays</button>
 </div>
 <div>
-   
+   <img
+    src='pics/cust.jpeg'
+    className='rounded-md w-25 h-25'
+   />
 </div>
 </div>
 

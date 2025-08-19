@@ -92,7 +92,7 @@ const Navbar = () => {
 
       {/* Currency Modal */}
       <Modal
-        width={800}
+        width={1000}
         title="Select Your Currency"
         open={isCurrencyModalOpen}
         onCancel={() => setIsCurrencyModalOpen(false)}
@@ -126,7 +126,7 @@ const Navbar = () => {
 
       {/* Country Modal */}
       <Modal
-        width={700}
+        width={900}
         title="Select your language"
         heading="Suggested for you"
         open={isCountryModalOpen}
