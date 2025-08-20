@@ -48,7 +48,7 @@ const SliderSection = () => {
                   alt={itm.name}
                   className="w-full h-44 object-cover rounded-lg shadow"
                 />
-                <span className="block text-center mt-2">{itm.name}</span>
+                <span className="block text-center mt-2 font-bold">{itm.name}</span>
               </div>
             ))}
           </div>
