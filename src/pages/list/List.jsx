@@ -10,15 +10,15 @@ function List() {
  const searchData = location.state
 
   return (
-    <div className=' pl-23 pr-23 pt-10 font-sans ' >
+    <div className=' pl-23 pr-15 pt-10 font-sans mt-2' >
     <div className='-mt-30'>
     <SearchBar searchData={searchData}/>
     </div>
-    <div className='flex justify-between pl-10 pr-10'>
-   <div className=' w-50'>
+    <div className='flex justify-between '>
+   <div className=' w-60 mt-5'>
    <Filters/>
    </div>
-    <div className=" w-full max-sm:pl-4  max-md:pr-0 max-md:pr-0'">
+    <div className="mt-4 w-full max-sm:pl-4  ml-8 max-md:pr-0">
     <Properties/>
     </div>
     </div>

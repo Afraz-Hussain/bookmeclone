@@ -8,7 +8,7 @@ import TrendingDest from './TrendingDest'
 function Home() {
   return (
    <div>
-     <div className='pl-23 pt-10 font-sans max-sm:pl-4 bg-[#003B95] -mt-15'>
+     <div className='pl-23 pt-10 font-sans max-sm:pl-4 bg-[#003B95] '>
      <Header/>
      <SearchBar/>
     </div>
