@@ -1,22 +1,26 @@
 export const sliderdata=[
     {id:1,
-     name:"Hotels",
-     pic:"pics/hotel.jpeg"   
+     name:"Lahore",
+     pic:"pics/hotel.jpeg",
+     quantity:"2,290 properties"   
     },
 
     {id:2,
         name:"villas",
-        pic:"pics/villas.jpeg"   
+        pic:"pics/villas.jpeg",
+        quantity:"2500 properties"  
        },
 
        {id:3,
         name:"vacation",
-        pic:"pics/vacation.jpeg"   
+        pic:"pics/vacation.jpeg",
+        quantity:"500 properties"   
        },
 
        {id:4,
         name:"resort",
-        pic:"pics/vacation.jpeg"   
+        pic:"pics/vacation.jpeg" ,
+        quantity:"300 properties"   
        },
 
        {id:5,

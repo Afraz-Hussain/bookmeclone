@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Modal } from "antd";
 import getSymbolFromCurrency from "currency-symbol-map";
 import NavbarBottom from "./NavbarBottom";
@@ -9,6 +9,25 @@ const Navbar = () => {
   const [isCountryModalOpen, setIsCountryModalOpen] = useState(false);
   const [selectedCurrency, setSelectedCurrency] = useState("PKR");
   const [selectedFlag, setSelectedFlag] = useState("https://flagcdn.com/w80/pk.png");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef(null);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen]);
 
   const currencies = [
     { code: "USD", name: "US Dollar" },
@@ -45,14 +64,14 @@ const Navbar = () => {
   return (
     <div>
         <div className="bg-[#003B95] font-sans text-white font-medium 
-        justify-between flex pl-24 pr-22  items-center py-3 relative pb-3">
-      {/* Logo  div 1*/}
+        justify-between flex px-6 lg:pl-24 lg:pr-22 items-center py-3 relative pb-3">
+      {/* Logo */}
       <div className="logo">
-      <h2 className="text-white font-sans font-bold text-2xl ">Booking.com</h2>
+        <h2 className="text-white font-sans font-bold text-xl lg:text-2xl">Booking.com</h2>
       </div>
 
-      {/* Navbar right section */}
-      <div className="others flex items-center gap-12 ">
+      {/* Desktop Navigation */}
+      <div className="hidden lg:flex items-center gap-12">
         {/* Currency Button */}
         <p
           className="cursor-pointer flex items-center gap-2 hover:bg-[#ebe9e931] px-2 py-1 rounded"
@@ -61,7 +80,6 @@ const Navbar = () => {
           {getSymbolFromCurrency(selectedCurrency)} {selectedCurrency}
         </p>
 
-        
         <div
           className="cursor-pointer flex items-center gap-2 hover:bg-[#ebe9e931] px-2 py-1 rounded"
           onClick={() => setIsCountryModalOpen(true)}
@@ -75,7 +93,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        
         <div className="property_listing">
           <p>List Your Property</p>
         </div>
@@ -89,6 +106,75 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile Hamburger Menu Button */}
+      <button
+        className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle mobile menu"
+      >
+        <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+        <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+        <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+      </button>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div ref={mobileMenuRef} className="lg:hidden absolute top-full left-0 right-0 bg-[#003B95] shadow-lg z-50">
+          <div className="px-6 py-4 space-y-4">
+            {/* Currency Button */}
+            <div
+              className="cursor-pointer flex items-center gap-2 hover:bg-[#ebe9e931] px-2 py-2 rounded"
+              onClick={() => {
+                setIsCurrencyModalOpen(true);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              <span className="text-lg">{getSymbolFromCurrency(selectedCurrency)}</span>
+              <span>{selectedCurrency}</span>
+            </div>
+
+            {/* Country Button */}
+            <div
+              className="cursor-pointer flex items-center gap-2 hover:bg-[#ebe9e931] px-2 py-2 rounded"
+              onClick={() => {
+                setIsCountryModalOpen(true);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              <div className="w-5 h-5 rounded-full overflow-hidden">
+                <img 
+                  src={selectedFlag} 
+                  alt="flag" 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+              <span>Language</span>
+            </div>
+
+            {/* List Your Property */}
+            <div className="hover:bg-[#ebe9e931] px-2 py-2 rounded">
+              <p>List Your Property</p>
+            </div>
+
+            {/* Auth Buttons */}
+            <div className="flex flex-col gap-2 pt-2">
+              <button 
+                className="bg-white text-blue-600 hover:bg-[#F0F6FD] px-3 py-2 rounded"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Register
+              </button>
+              <button 
+                className="bg-white text-blue-600 hover:bg-[#F0F6FD] px-3 py-2 rounded"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Sign In
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Currency Modal */}
       <Modal
